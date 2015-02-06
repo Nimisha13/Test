@@ -1,0 +1,17 @@
+*** Settings ***
+Library           Selenium2Library
+Library           ../../Documents/Papyrus Automation/ExampleLibrary.py
+
+*** Variables ***
+${rc}             5
+${aa}             0
+${reult3}         ${EMPTY}
+
+*** Test Cases ***
+test
+    ${result}=    Run Keyword If    ${rc}==0    Evaluate    1+1    ELSE IF    0 < ${rc} < 42
+    ...    Evaluate    7+7
+    ${data}=    Evaluate    8+9
+    Run Keyword If    ${aa}==0    Run keywords    Log    ${data}    AND    Log
+    ...    ABC    AND    LOG    99
+    ${res}=    Numbers Should Be Equal    5    9
